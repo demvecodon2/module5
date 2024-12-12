@@ -42,17 +42,52 @@ let addedCourses = [
         rating: 3.8,
     }
 ];
+// hiển thị trên 4
+const diplay = courses.filter(courses => courses.rating > 4);
+diplay.forEach(courses => {
+    console.log(`${courses.title} ${courses.rating}`)
+});
+// hiển thị dưới 4 và - - -;
 
-// lọc ra các bài có rating trên 4.
-const hienthi = courses.filter(courses => courses.rating >4.0);
-hienthi.forEach(courses =>{console.log(`${courses.title} ${courses.rating}`)});
-//các bài dưới 4
-const loaibo = courses.filter(courses => courses.rating <= 3.9);
-loaibo.forEach(courses =>{console.log(`${courses.title} ${courses.rating}`)});
-console.log(loaibo);
-// nối bảng
-const mergeCourses = (arr1, arr2) => {
-    return [...arr1, ...arr2];
-};
-const allCourses = mergeCourses(courses, addedCourses);
-console.log(allCourses);
+const display3 = courses.filter(course => course.rating < 4)
+    .map (course => `<${course.id}> - <${course.title}> - <${course.rating}>`);
+display3.forEach((courses =>{
+    console.log(courses);
+}))
+
+
+//test map
+function courseHendler(course,index) {
+    return {
+        id: course.id,
+        title: ` tiêu đề ${course.title}`,
+        rating: `đánh giá ${course.rating}`,
+        index: `vị trí ${index + 1}`
+    }
+}
+const newCourse = courses.map(courseHendler);
+console.log(newCourse);
+
+
+// nối 2 mảng
+function arrayConcatenation(arr1,arr2){
+    return[...arr1,...arr2];
+}
+let newArray= arrayConcatenation(courses,addedCourses);
+console.log(newArray);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
